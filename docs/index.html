@@ -18,5 +18,24 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script defer>
+      const mutationObserver = new MutationObserver((e) => {
+        let imgs = document.querySelectorAll("img");
+        imgs.forEach((img) => {
+          if (img.src.includes("/static/media/")) {
+            let a = window.location.href;
+            if (a[a.length - 1] === "/") {
+              a = a.slice(0, -1);
+            }
+            img.src = img.src.replace(window.origin, a);
+          }
+        });
+      });
+
+      mutationObserver.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+    </script>
   </body>
 </html>

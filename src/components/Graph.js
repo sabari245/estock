@@ -156,11 +156,11 @@ const Graph = () => {
         />
         {currentSymbol ? <></> : <div className="h-32"></div>}
       </div>
-      {currentSymbol && (
+      {true && (
         <div className="bg-white rounded-lg flex items-center justify-between px-4 my-6 py-2">
           <div className="flex items-center">
             <div className="mr-10">
-              <img src={stock} alt="stock" className="h-14 w-14" />
+              <img src={stock} className="h-14 w-14" />
             </div>
             <div className="flex flex-col">
               <div className="text-black text-2xl font-bold ">
