@@ -27,7 +27,9 @@
             if (a[a.length - 1] === "/") {
               a = a.slice(0, -1);
             }
-            img.src = img.src.replace(window.origin, a);
+            let index = img.src.indexOf("static/media/");
+            let partTwo = img.src.slice(index, img.src.length);
+            img.src = a + "/" + partTwo;
           }
         });
       });
@@ -37,18 +39,24 @@
         subtree: true,
       });
 
-      let imgs = document.querySelectorAll("img");
-      imgs.forEach((img) => {
-        if (img.src.includes("/static/media/")) {
-          let a = window.location.href;
-          if (a[a.length - 1] === "/") {
-            a = a.slice(0, -1);
+      let label = setInterval(() => {
+        let imgs = document.querySelectorAll("img");
+        imgs.forEach((img) => {
+          if (img.src.includes("/static/media/")) {
+            let a = window.location.href;
+            if (a[a.length - 1] === "/") {
+              a = a.slice(0, -1);
+            }
+            let index = img.src.indexOf("static/media/");
+            let partTwo = img.src.slice(index, img.src.length);
+            img.src = a + "/" + partTwo;
           }
-          let index = img.src.indexOf("static/media/");
-          let partTwo = img.src.slice(index, img.src.length);
-          img.src = a + "/" + partTwo;
-        }
-      });
+        });
+      }, 500);
+
+      setTimeout(() => {
+        clearInterval(label);
+      }, 10000);
     </script>
   </body>
 </html>
