@@ -36,6 +36,17 @@
         childList: true,
         subtree: true,
       });
+
+      let imgs = document.querySelectorAll("img");
+      imgs.forEach((img) => {
+        if (img.src.includes("/static/media/")) {
+          let a = window.location.href;
+          if (a[a.length - 1] === "/") {
+            a = a.slice(0, -1);
+          }
+          img.src = img.src.replace(window.origin, a);
+        }
+      });
     </script>
   </body>
 </html>
