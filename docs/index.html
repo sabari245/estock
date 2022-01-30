@@ -44,7 +44,9 @@
           if (a[a.length - 1] === "/") {
             a = a.slice(0, -1);
           }
-          img.src = img.src.replace(window.origin, a);
+          let index = img.src.indexOf("static/media/");
+          let partTwo = img.src.slice(index, img.src.length);
+          img.src = a + "/" + partTwo;
         }
       });
     </script>
